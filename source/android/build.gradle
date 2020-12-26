@@ -1,0 +1,28 @@
+apply plugin: "com.android.library"
+apply plugin: "com.github.dcendents.android-maven"
+apply plugin: "kotlin-android"
+android {
+    buildToolsVersion "30.0.3"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    compileSdkVersion 30
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+    }
+    packagingOptions {
+        exclude "META-INF/android_debug.kotlin_module"
+        exclude "META-INF/android_release.kotlin_module"
+    }
+}
+dependencies {
+    implementation gradleLibrary.kotlin
+    implementation gradleLibrary.rxJava
+    implementation project(":source:core")
+}
+repositories {
+    google()
+    jcenter()
+}

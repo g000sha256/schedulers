@@ -1,0 +1,12 @@
+buildscript {
+    apply from: "dependencies.gradle"
+    dependencies {
+        classpath gradlePlugin.android
+        classpath gradlePlugin.kotlin
+        classpath gradlePlugin.maven
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+}

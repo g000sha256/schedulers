@@ -1,0 +1,17 @@
+apply plugin: "java-library"
+apply plugin: "kotlin"
+apply plugin: "maven"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    implementation gradleLibrary.kotlin
+    implementation gradleLibrary.rxJava
+}
+jar {
+    exclude "META-INF/core.kotlin_module"
+}
+repositories {
+    jcenter()
+}

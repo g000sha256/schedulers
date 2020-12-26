@@ -1,0 +1,12 @@
+ext {
+    final String versionKotlin = "1.4.21"
+    gradleLibrary = [
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib:$versionKotlin",
+            rxJava: "io.reactivex.rxjava2:rxjava:2.2.20"
+    ]
+    gradlePlugin = [
+            android: "com.android.tools.build:gradle:4.1.1",
+            kotlin : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versionKotlin",
+            maven  : "com.github.dcendents:android-maven-gradle-plugin:2.1"
+    ]
+}

@@ -4,8 +4,8 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
-import io.reactivex.Scheduler
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.disposables.Disposable
 import java.util.concurrent.TimeUnit
 
 internal class HandlerWorker(

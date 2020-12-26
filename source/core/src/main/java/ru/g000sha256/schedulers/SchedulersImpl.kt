@@ -1,13 +1,13 @@
 package ru.g000sha256.schedulers
 
-import io.reactivex.Scheduler
-import io.reactivex.internal.schedulers.ComputationScheduler
-import io.reactivex.internal.schedulers.ExecutorScheduler
-import io.reactivex.internal.schedulers.IoScheduler
-import io.reactivex.internal.schedulers.NewThreadScheduler
-import io.reactivex.internal.schedulers.RxThreadFactory
-import io.reactivex.internal.schedulers.SingleScheduler
-import io.reactivex.internal.schedulers.TrampolineScheduler
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.internal.schedulers.ComputationScheduler
+import io.reactivex.rxjava3.internal.schedulers.ExecutorScheduler
+import io.reactivex.rxjava3.internal.schedulers.IoScheduler
+import io.reactivex.rxjava3.internal.schedulers.NewThreadScheduler
+import io.reactivex.rxjava3.internal.schedulers.RxThreadFactory
+import io.reactivex.rxjava3.internal.schedulers.SingleScheduler
+import io.reactivex.rxjava3.internal.schedulers.TrampolineScheduler
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import java.util.concurrent.ThreadFactory
@@ -39,7 +39,11 @@ class SchedulersImpl(
     }
 
     override fun createExecutorScheduler(executor: Executor, interruptibleWorker: Boolean): Scheduler {
-        return ExecutorScheduler(executor, interruptibleWorker)
+        return createExecutorScheduler(executor, interruptibleWorker, false)
+    }
+
+    override fun createExecutorScheduler(executor: Executor, interruptibleWorker: Boolean, fair: Boolean): Scheduler {
+        return ExecutorScheduler(executor, interruptibleWorker, fair)
     }
 
     override fun createOneThreadScheduler(): Scheduler {
@@ -64,22 +68,22 @@ class SchedulersImpl(
     }
 
     private fun initComputationScheduler(threadFactory: ThreadFactory?): Scheduler {
-        val threadFactory = threadFactory ?: createThreadFactory("RxComputationScheduler", "rx2.computation-priority", true)
+        val threadFactory = threadFactory ?: createThreadFactory("RxComputationScheduler", "rx3.computation-priority", true)
         return ComputationScheduler(threadFactory)
     }
 
     private fun initIoScheduler(threadFactory: ThreadFactory?): Scheduler {
-        val threadFactory = threadFactory ?: createThreadFactory("RxIoScheduler", "rx2.io-priority", false)
+        val threadFactory = threadFactory ?: createThreadFactory("RxIoScheduler", "rx3.io-priority", false)
         return IoScheduler(threadFactory)
     }
 
     private fun initNewThreadScheduler(threadFactory: ThreadFactory?): Scheduler {
-        val threadFactory = threadFactory ?: createThreadFactory("RxNewThreadScheduler", "rx2.newthread-priority", false)
+        val threadFactory = threadFactory ?: createThreadFactory("RxNewThreadScheduler", "rx3.newthread-priority", false)
         return NewThreadScheduler(threadFactory)
     }
 
     private fun initSingleScheduler(threadFactory: ThreadFactory?): Scheduler {
-        val threadFactory = threadFactory ?: createThreadFactory("RxSingleScheduler", "rx2.single-priority", true)
+        val threadFactory = threadFactory ?: createThreadFactory("RxSingleScheduler", "rx3.single-priority", true)
         return SingleScheduler(threadFactory)
     }
 

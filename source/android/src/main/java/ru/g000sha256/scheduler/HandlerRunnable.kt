@@ -1,6 +1,6 @@
 package ru.g000sha256.scheduler
 
-import io.reactivex.plugins.RxJavaPlugins
+import io.reactivex.rxjava3.plugins.RxJavaPlugins
 
 internal class HandlerRunnable(private val runnable: Runnable) : Runnable {
 

@@ -2,7 +2,7 @@ package ru.g000sha256.scheduler
 
 import android.os.Handler
 import android.os.Looper
-import io.reactivex.Scheduler
+import io.reactivex.rxjava3.core.Scheduler
 import ru.g000sha256.schedulers.MainSchedulerFactory
 
 class MainSchedulerFactoryImpl(private val isAsynchronous: Boolean = true) : MainSchedulerFactory {

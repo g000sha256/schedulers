@@ -1,9 +1,9 @@
 package ru.g000sha256.scheduler
 
 import android.os.Handler
-import io.reactivex.Scheduler
-import io.reactivex.disposables.Disposable
-import io.reactivex.plugins.RxJavaPlugins
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import java.util.concurrent.TimeUnit
 
 internal class HandlerScheduler(
